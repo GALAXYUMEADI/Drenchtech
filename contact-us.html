@@ -122,46 +122,73 @@
           
            
             <div>
-                    <div class="alert">Your message has been sent</div>
-                    <form id="myForm" action="https://formspree.io/f/meqwgwdw" method="POST">
-                        <input type="hidden" name="_subject" value="New submission from my website">
-                        <input type="hidden" name="_next" value="https://galaxyumeadi.github.io/drenchtech/thank-you.html">
-                        <input type="hidden" name="_cc" value="galaxyumeadi@gmail.com">
-            
-                        <div class="inputwrap">
-                            <input type="text" name="fname" id="fname" required placeholder=" First name:">
-                        </div>
-            
-                        <div class="inputwrap">
-                            <input type="text" name="lname" id="lname" required placeholder="Last name:">
-                        </div>
-            
-                        <div class="inputwrap">
-                            <input type="email" name="email" id="email" required placeholder="Your email address ">
-                        </div>
-            
-                        <div class="inputwrap">
-                            <textarea name="message" id="message" cols="80" rows="5" placeholder="Your message"></textarea>
-                        </div>
-            
-                        <!-- Subscribe checkboxes -->
-                        <div class="inputwrap">
-                            <input type="checkbox" name="newsletter" id="newsletter" value="newsletter">
-                            <label for="newsletter">Sign up for Email Newsletter</label>
-                        </div>
-            
-                        <div class="inputwrap">
-                            <input type="checkbox" name="notify" id="notify" value="post-notifications">
-                            <label for="notifications">Post Notifications</label>
-                        </div>
-            
-                        <div class="inputwrap">
-                            <button type="submit" id="submit">send message</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            
+    <div class="alert" id="success-message">Your message has been sent.</div>
+    <div class="alert" id="error-message" style="display:none;">There was an error sending your message. Please try again later.</div>
+    <form id="myForm" action="https://formspree.io/f/meqwgwdw" method="POST">
+        <input type="hidden" name="_subject" value="New submission from my website">
+        <input type="hidden" name="_next" value="https://galaxyumeadi.github.io/drenchtech/contact-us.html">
+        <input type="hidden" name="_cc" value="galaxyumeadi@gmail.com">
+
+        <div class="inputwrap">
+            <input type="text" name="fname" id="fname" required placeholder=" First name:">
+        </div>
+
+        <div class="inputwrap">
+            <input type="text" name="lname" id="lname" required placeholder="Last name:">
+        </div>
+
+        <div class="inputwrap">
+            <input type="email" name="email" id="email" required placeholder="Your email address ">
+        </div>
+
+        <div class="inputwrap">
+            <textarea name="message" id="message" cols="80" rows="5" placeholder="Your message"></textarea>
+        </div>
+
+        <!-- Subscribe checkboxes -->
+        <div class="inputwrap">
+            <input type="checkbox" name="newsletter" id="newsletter" value="newsletter">
+            <label for="newsletter">Sign up for Email Newsletter</label>
+        </div>
+
+        <div class="inputwrap">
+            <input type="checkbox" name="notify" id="notify" value="post-notifications">
+            <label for="notifications">Post Notifications</label>
+        </div>
+
+        <div class="inputwrap">
+            <button type="submit" id="submit">send message</button>
+        </div>
+    </form>
+</div>
+<script>
+  // Get the form
+  const form = document.getElementById('myForm');
+
+  // Add a listener to the form
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent the form from submitting normally
+    const formData = new FormData(form); // get the form data
+    fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        document.getElementById('success-message').style.display = 'block'; // show success message
+        form.reset(); // reset the form
+      })
+      .catch(error => {
+        console.error('There was an error!', error);
+        document.getElementById('error-message').style.display = 'block'; // show error message
+      });
+  });
+</script>
 
 
 
