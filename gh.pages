@@ -1,5 +1,4 @@
 
- <div>
                     <div class="alert">Your message has been sent</div>
                     <form id="myForm" action="https://formspree.io/f/meqwgwdw"1 method="POST">
                         <input type="hidden" name="_subject" value="New submission from my website">
@@ -38,6 +37,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
+         
             
 
