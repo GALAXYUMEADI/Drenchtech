@@ -9,7 +9,7 @@
                     <div class="alert">Your message has been sent</div>
                     <form id="myForm" action="https://formspree.io/f/meqwgwdw" method="POST">
                         <input type="hidden" name="_subject" value="New submission from my website">
-                        <input type="hidden" name="_next" value="https://drenchtech/thank-you.html">
+                        <input type="hidden" name="_next" value="https://galaxyumeadi.github.io/Drenchtech/thank-you.html">
                         <input type="hidden" name="_cc" value="drenchtechs@gmail.com">
             
                         <div class="inputwrap">
